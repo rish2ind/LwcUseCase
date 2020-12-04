@@ -1,0 +1,58 @@
+<template>
+    <article class="slds-card" style="margin-bottom: 10px;">
+        <h1>Account Records</h1>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_2-of-3">
+                <lightning-dual-listbox name="languages"
+                label="Select Fields"
+                source-label="Available"
+                selected-label="Selected"
+                field-level-help="Select your preferred fields"
+                options={options}
+                value={values}
+                onchange={handleFields}></lightning-dual-listbox>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-input
+                    name="enter-search"
+                    label="Search records"
+                    type="search"
+                    onkeyup={handleKeyUp}
+                    style="width: 100%; margin-bottom: 15px;"
+                ></lightning-input>
+            </div>
+          </div>
+        
+    </article>
+    <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                onrowselection={handleRowAction}>
+        </lightning-datatable>
+        <lightning-card>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-3">
+                  
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning-button variant="brand" disabled label="Previous" title="Primary action" onclick={handlePrevious} class="slds-m-left_x-small previous"></lightning-button><lightning-button variant="brand" label="Next" title="Primary action" onclick={handleNext} class="slds-m-left_x-small next"></lightning-button>
+            &nbsp;{currentPage} of {totalPage}
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  
+                </div>
+              </div>
+            
+        </lightning-card>
+        <lightning-card title="Contact Details">
+            <template if:true={contactList}>
+            <template for:each={contactList} for:item="item" for:index="index">
+               <p key={item.Id}>
+                   {item.Name}
+               </p>
+
+            </template>
+        </template>
+        </lightning-card>
+</template>
