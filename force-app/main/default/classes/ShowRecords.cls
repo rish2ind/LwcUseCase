@@ -56,7 +56,7 @@ public with sharing class ShowRecords {
            // labelName.add(get_F_name.get(fields[i]).getDescribe().getLabel());
         }
         
-      //  mapOfFields.put(labelName, fields);
+      //  mapOfFields.put(labelName, fields); 
         System.debug('This is the final Map : ' + mapOfFields);
         System.debug('This is the label name : ' + labelName);
        return mapOfFields;  
